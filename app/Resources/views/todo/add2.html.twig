@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <h2 class="page-header">Add Todo</h2>
+
+    <div id="main">
+        <form>
+            <input class="form-control input-lg" id="inputlg" type="text" ng-model="todoText">
+            <br/>
+            <button class="btn btn-default" ng-click="addTodo()"> Add ToDo </button>
+
+        </form>
+
+    </form>
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{%  block body %}
+    <h2 class="page-header"> Todos Works </h2>
+    <table class="table table-hover" >
+        <thead>
+        <tr>
+            <th>Todo Works</th>
+
+            <th>Action</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for todo in todos %}
+        <tr>
+            <td>{{ todo.todowork }}</td>
+
+            <td><input type="checkbox" ng-model="todo.done"></td>
+            <td> <a href="delete/{{ todo.id }}" class="btn btn-danger " ng-class="{'done':todo.done}"><i class="fa fa-times" aria-hidden="true"> </i>Delete </a> </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
