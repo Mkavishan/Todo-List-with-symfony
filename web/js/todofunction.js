@@ -30,9 +30,44 @@ app.controller('todoController',function ($scope, $http) {
 
     }
 
-    $http.get("http://127.0.0.1:8000/todo/list")
+    $http.get("http://127.0.0.1:8000/todo/undoneList")
         .then(function(response) {
             $scope.todos = response.data;
+        }, function(response) {
+            $scope.todos = "Error";
+        });
+
+
+    $scope.changeStatus = function (id) {
+        $scope.id = id;
+        $scope.id = {
+            'id'    :   $scope.id
+        }
+
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+        $http.post('http://127.0.0.1:8000/todo/update', $scope.id, config)
+            .success(function (data, status, headers, config) {
+
+                $scope.PostDataResponse = data;
+
+                //$scope.PostDataResponse = "sucsess";
+            })
+            .error(function (data, status, header, config) {
+                $scope.ResponseDetails = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+
+    }
+
+    $http.get("http://127.0.0.1:8000/todo/doneList")
+        .then(function(response) {
+            $scope.dones = response.data;
         }, function(response) {
             $scope.todos = "Error";
         });

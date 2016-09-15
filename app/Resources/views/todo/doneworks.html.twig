@@ -1,21 +1,18 @@
 {% extends 'base.html.twig' %}
 {%  block body %}
-    <h2 class="page-header"> Todos Works </h2>
+    <h2 class="page-header"> Done Works </h2>
 
     <table class="table table-hover" >
         <thead>
         <tr>
-            <th>Todo Works</th>
-
-            <th>Action</th>
+            <th>Done Works</th>
             <th>Remove</th>
         </tr>
         </thead>
         <tbody>
 
-        <tr ng-repeat="todo in todos track by $index">
+        <tr ng-repeat="todo in dones track by $index">
             <td ng-class="{'done':todo.done}"><span ng-bind="todo.todowork"></span></td>
-            <td><input type="checkbox" ng-model="todo.done" ng-click="changeStatus(todo.id)"></td>
             <td> <a href="delete/{{ '{{ todo.id }}' }}" class="btn btn-danger " ><i class="fa fa-times" aria-hidden="true"> </i>Delete </a> </td>
         </tr>
 

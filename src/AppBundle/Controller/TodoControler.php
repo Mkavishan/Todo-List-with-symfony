@@ -37,6 +37,8 @@ class TodoControler extends Controller
             'todos' => $todos
         ));
         */
+
+        //$database = new TodoDatabase();
         $em = $this->getDoctrine()->getManager();
         $todos = $em->getRepository('AppBundle:TodoDatabase')->findAll();
         $todos = $this->get('serializer')->serialize($todos,'json');
@@ -53,6 +55,12 @@ class TodoControler extends Controller
         return $this -> render('todo/index.html.twig');
     }
 
+    /**
+     * @Route("todo/done", name="done_works")
+     */
+    public function doneWork(){
+        return $this -> render('todo/doneworks.html.twig');
+    }
 
     /**
      * @Route("todo/add", name="form")
@@ -63,6 +71,7 @@ class TodoControler extends Controller
 
     /**
      * @Route("todo/add2")
+     * @Method("POST")
      */
     public function addAction(Request $request){
     /*
@@ -158,4 +167,65 @@ class TodoControler extends Controller
         return new Response('<html><body>OK</body> </html>');
     }
 
+    /**
+     * @Route("todo/update")
+     * @Method("POST")
+     */
+    public function changeStatus(Request $request){
+        $data = json_decode($request->getContent(), true);
+       // $todo = new TodoDatabase();
+
+        $id = $data["id"];
+
+        //$todo->setTodowork("Learn");
+        //$todo->setStatus(1);
+
+        $em = $this-> getDoctrine()->getManager();
+        $todoid = $em->getRepository('AppBundle:TodoDatabase')->find($id);
+        if(!$todoid){
+            throw $this->createNotFoundException(
+                'No todo find'
+            );
+        }
+        $todoid->setStatus(1);
+        $em->flush();
+        return $this-> redirectToRoute('display');
+
+    }
+    /**
+     * @Route("todo/undoneList", name="undone_list")
+     * @Method("GET")
+     */
+    public function undonelist(){
+        $repository= $this->getDoctrine()->getRepository('AppBundle:TodoDatabase');
+        $query = $repository->createQueryBuilder('t')
+            ->select('t.status,t.todowork,t.id')
+            ->Where('t.status = 0')
+            ->getQuery();
+        $entities = $query->getResult();
+
+        $todos = $this->get('serializer')->serialize($entities,'json');
+        $respose = new Response($todos);
+        $respose->headers->set('Content-Type','application/json');
+        return $respose;
+
+    }
+    /**
+     * @Route("todo/doneList", name="done_list")
+     * @Method("GET")
+     */
+    public function donelist(){
+        $repository= $this->getDoctrine()->getRepository('AppBundle:TodoDatabase');
+        $query = $repository->createQueryBuilder('t')
+            ->select('t.status,t.todowork,t.id')
+            ->Where('t.status = 1')
+            ->getQuery();
+        $entities = $query->getResult();
+
+        $todos = $this->get('serializer')->serialize($entities,'json');
+        $respose = new Response($todos);
+        $respose->headers->set('Content-Type','application/json');
+        return $respose;
+
+    }
 }
