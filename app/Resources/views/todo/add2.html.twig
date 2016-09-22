@@ -1,17 +1,39 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-    <h2 class="page-header">Add Todo</h2>
+    <h2 class="page-header" xmlns="http://www.w3.org/1999/html">Add Todo</h2>
 
     <div id="main">
+
         <form ng-submit="addTodo(todo)">
-            <input class="form-control input-lg" id="inputlg" type="text" ng-model="todo.todoText">
+            <div class="row">
+                <div class="col-lg-2">
+                    Enter Todo
+                </div>
+                <div class="col-lg-8">
+                <input class="form-control input-lg" id="inputlg" type="text" ng-model="todo.todoText">
+                </div>
+            </div>
             <br/>
-            <button class="btn btn-default" > Add ToDo </button>
+            <div class="row">
+                <div class="col-lg-2">
+                 Please Select Priority
+                </div>
+                <div class="col-lg-4">
+                    <select class="form-control" ng-model="todo.priority" ng-options="x.id as x.status for x in data.priorities"></select>
+                </div>
+            </div>
+            <br/>
+            <div class="row">
+                <div class="col-lg-8">
+                    </div>
+            <div class="col-lg-2">
+            <button class="btn btn-default btn-lg" > Add ToDo </button>
+            </div>
+            </div>
 
         </form>
 
-    </form>
     </div>
 
 

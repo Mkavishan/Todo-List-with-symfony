@@ -114,7 +114,9 @@ class TodoControler extends Controller
             $todo = new TodoDatabase();
 
             $todowork = $data['todoText'];
+            $priority = $data['priority'];
             $todo->setTodowork($todowork);
+            $todo->setPriority($priority);
             $todo->setStatus(0);
 
             $em = $this-> getDoctrine()->getManager();
@@ -204,8 +206,9 @@ class TodoControler extends Controller
     public function undonelist(){
         $repository= $this->getDoctrine()->getRepository('AppBundle:TodoDatabase');
         $query = $repository->createQueryBuilder('t')
-            ->select('t.status,t.todowork,t.id')
+            ->select('t.status,t.todowork,t.id, t.priority')
             ->Where('t.status = 0')
+            ->OrderBy ('t.priority','DESC')
             ->getQuery();
         $entities = $query->getResult();
 
@@ -222,8 +225,9 @@ class TodoControler extends Controller
     public function donelist(){
         $repository= $this->getDoctrine()->getRepository('AppBundle:TodoDatabase');
         $query = $repository->createQueryBuilder('t')
-            ->select('t.status,t.todowork,t.id')
+            ->select('t.status,t.todowork,t.id,t.priority')
             ->Where('t.status = 1')
+            ->OrderBy ('t.priority','DESC')
             ->getQuery();
         $entities = $query->getResult();
 

@@ -33,6 +33,27 @@ class TodoDatabase
     private $status;
 
     /**
+     * @ORM\Column(type="integer")
+     */
+    private $priority;
+
+    /**
+     * @return mixed
+     */
+    public function getPriority()
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @param mixed $priority
+     */
+    public function setPriority($priority)
+    {
+        $this->priority = $priority;
+    }
+
+    /**
      * @return mixed
      */
     public function getId()

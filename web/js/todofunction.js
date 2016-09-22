@@ -72,6 +72,20 @@ app.controller('todoController',function ($scope, $http) {
             $scope.todos = "Error";
         });
 
+    //$scope.todo = {};
+    $scope.data.priority = "2";
+
+    $scope.data.priorities = [{
+        id: "1",
+        status: "Low"
+    }, {
+        id: "2",
+        status: "Normal"
+    }, {
+        id: "3",
+        status: "High"
+    }];
+
 
 
 })
