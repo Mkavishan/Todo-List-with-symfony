@@ -79,37 +79,6 @@ class TodoControler extends Controller
      * @Method("POST")
      */
     public function addAction(Request $request){
-    /*
-        $todo = new TodoDatabase();
-        $form = $this ->createFormBuilder($todo)
-            ->add('todowork', TextType::class, array('attr'=> array('class'=> 'form-control', 'style'=>'margin-bottom:15px')))
-            ->add('save', SubmitType::class, array('label'=>'Add ToDo','attr'=> array('class'=> 'btn btn-primary', 'style'=>'margin-bottom:15px')))
-            ->getForm();
-        $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-            //die('Submited');
-            $todowork = $form['todowork']->getData();
-
-
-            $todo -> setTodowork($todowork);
-            $todo -> setStatus(0);
-
-            $em = $this->getDoctrine()->getManager();
-            $em -> persist($todo);
-            $em -> flush();
-
-            $this -> addFlash(
-                'notice','Todo Added'
-            );
-            return $this-> redirectToRoute('todo_list');
-
-        }
-        return $this -> render('todo/add.html.twig', array('form'=> $form->createView()));
-
-
-        return $this -> render('todo/add2.html.twig');
-    */
-
             $data = json_decode($request->getContent(), true);
             $todo = new TodoDatabase();
 
