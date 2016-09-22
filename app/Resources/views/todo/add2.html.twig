@@ -20,12 +20,12 @@
                  Please Select Priority
                 </div>
                 <div class="col-lg-4">
-                    <select class="form-control" ng-model="todo.priority" ng-options="x.id as x.status for x in data.priorities"></select>
+                    <select class="form-control" ng-model="todo.priority" ng-options="x.id as x.status for x in todo.priorities"></select>
                 </div>
             </div>
             <br/>
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-2">
                     </div>
             <div class="col-lg-2">
             <button class="btn btn-default btn-lg" > Add ToDo </button>

@@ -18,7 +18,6 @@ class todoTest extends WebTestCase{
         $client = static::createClient();
         $crawler = $client->request('POST','http://127.0.0.1:8000/todo/add');
         $this->assertEquals(200,$client->getResponse()->getStatusCode());
-        echo $crawler;
     }
 
 }
