@@ -22,6 +22,11 @@ use JMS\SerializerBundle\Serializer\Serializer;
 
 class TodoControler extends Controller
 {
+    public function num(){
+        //echo 'Kavishan';
+        return 20;
+    }
+
     /**
      * @Route("todo/list", name="todo_list")
      * @Method("GET")
@@ -119,7 +124,7 @@ class TodoControler extends Controller
                 'Notice',
                 'todo Added'
             );
-        return $this-> redirectToRoute('display');
+        return $this-> redirectToRoute('done_works');
 
 
 
@@ -228,4 +233,6 @@ class TodoControler extends Controller
         return $respose;
 
     }
+
+
 }

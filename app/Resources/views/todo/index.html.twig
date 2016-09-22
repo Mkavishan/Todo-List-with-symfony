@@ -16,7 +16,7 @@
         <tr ng-repeat="todo in todos track by $index">
             <td ng-class="{'done':todo.done}"><span ng-bind="todo.todowork"></span></td>
             <td><input type="checkbox" ng-model="todo.done" ng-click="changeStatus(todo.id)"></td>
-            <td> <a href="delete/{{ '{{ todo.id }}' }}" class="btn btn-danger " ><i class="fa fa-times" aria-hidden="true"> </i>Delete </a> </td>
+            <td> <a href="delete/{{ '{{ todo.id }}' }}" class="btn btn-danger btn-sm" ><i class="fa fa-times" aria-hidden="true"> </i>Delete </a> </td>
         </tr>
 
         </tbody>
