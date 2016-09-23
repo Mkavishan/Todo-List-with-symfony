@@ -1,12 +1,12 @@
 <?php
-require ("AppBundle/Controller/hello.php");
-use Behat\Behat\Context\BehatContext,
-    Behat\Behat\Exception\PendingException;
-use Behat\Behat\Context\SnippetAcceptingContext;
-use Behat\Gherkin\Node\PyStringNode;
-use Behat\Gherkin\Node\TableNode;
+//require ("AppBundle/Controller/hello.php");
+use Behat\Behat\Context\BehatContext;
+//    Behat\Behat\Exception\PendingException;
+use    Behat\Behat\Context\SnippetAcceptingContext;
+//use Behat\Gherkin\Node\PyStringNode;
+//use Behat\Gherkin\Node\TableNode;
 
-class FeatureContext extends BehatContext implements SnippetAcceptingContext
+class FeatureContext implements SnippetAcceptingContext
 {
     private  $Adder;
     /**
@@ -14,15 +14,17 @@ class FeatureContext extends BehatContext implements SnippetAcceptingContext
      */
     public function iHaveTheNumberAndTheNumber($a, $b)
     {
+
         $this->Adder = new \AppBundle\Controller\hello($a,$b);
         //throw new PendingException();
     }
 
     /**
-     * @When I add the togrther
+     * @When I add the together
      */
-    public function iAddTheTogrther()
+    public function iAddTheTogether2()
     {
+
         $this->Adder->add();
        // throw new PendingException();
     }
