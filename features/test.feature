@@ -1,8 +1,8 @@
-Feature: Todo list . it can add todo items
-
-  Scenario: Add new todo to todo list
-    Given First i goto the "/todo/add"
-    And I fill the  "todo"
-    And I fill in "priority" with "normal"
-    And I press "Add Todo"
-    Then I should see "/todo/index"
+Feature: adder
+  In order to display the sum of two numbers
+  As anybody
+  I need to provide two numbers
+  Scenario: Display the sum of two provided numbers
+    Given I have the number 50 and the number 25
+    When I add the togrther
+    Then I should get 70
