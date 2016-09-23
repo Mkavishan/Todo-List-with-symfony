@@ -26,7 +26,8 @@ app.controller('todoController',function ($scope, $http) {
                     "<hr />headers: " + header +
                     "<hr />config: " + config;
             });
-        $scope.data = '';
+        //$scope.data = '';
+        window.location.href = "http://127.0.0.1:8000/todo/index";
 
     }
 

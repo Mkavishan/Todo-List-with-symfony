@@ -1,9 +1,8 @@
-Feature:
-  In order to add item
-  As  user
-  I need to add a item
-  Scenario: click on the "Add ToDo"
-    Given I go to "http://drupal.org"
-    When I fill in "Search Drupal.org" with "behat"
-    And I press "Search"
-    Then I should see "Behat Drupal Extension"
+Feature: Todo list . it can add todo items
+
+  Scenario: Add new todo to todo list
+    Given First i goto the "/todo/add"
+    And I fill the  "todo"
+    And I fill in "priority" with "normal"
+    And I press "Add Todo"
+    Then I should see "/todo/index"

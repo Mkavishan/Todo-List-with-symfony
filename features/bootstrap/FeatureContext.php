@@ -1,58 +1,63 @@
 <?php
 
-use Behat\Behat\Context\Context;
+use Behat\Behat\Context\SnippetAcceptingContext;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
 
-/**
- * Defines application features from the specific context.
- */
-class FeatureContext implements Context
+class FeatureContext implements SnippetAcceptingContext
 {
-    private $shelf;
-    private $basket;
-
+    /**
+     * Initializes context.
+     */
     public function __construct()
     {
-        $this->shelf = new Shelf();
-        $this->basket = new Basket($this->shelf);
+
     }
 
     /**
-     * @Given there is a :product, which costs £:price
+     * @Given First i goto the :arg1
      */
-    public function thereIsAWhichCostsPs($product, $price)
+    public function firstIGotoThe($arg1)
     {
-        $this->shelf->setProductPrice($product, floatval($price));
+        echo "Hello World\n";
+        echo "Iam behat test\n";
+        throw new PendingException();
     }
 
     /**
-     * @When I add the :product to the basket
+     * @Given I fill the  :arg1
      */
-    public function iAddTheToTheBasket($product)
+    public function iFillThe($arg1)
     {
-        $this->basket->addProduct($product);
+
+        throw new PendingException();
     }
 
     /**
-     * @Then I should have :count product(s) in the basket
+     * @Given I fill in :arg1 with :arg2
      */
-    public function iShouldHaveProductInTheBasket($count)
+    public function iFillInWith($arg1, $arg2)
     {
-        PHPUnit_Framework_Assert::assertCount(
-            intval($count),
-            $this->basket
-        );
+
+        throw new PendingException();
     }
 
     /**
-     * @Then the overall basket price should be £:price
+     * @Given I press :arg1
      */
-    public function theOverallBasketPriceShouldBePs($price)
+    public function iPress($arg1)
     {
-        PHPUnit_Framework_Assert::assertSame(
-            floatval($price),
-            $this->basket->getTotalPrice()
-        );
+
+        throw new PendingException();
     }
+
+    /**
+     * @Then I should see :arg1
+     */
+    public function iShouldSee($arg1)
+    {
+
+        throw new PendingException();
+    }
+
 }
