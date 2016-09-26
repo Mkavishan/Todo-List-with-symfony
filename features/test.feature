@@ -1,8 +1,10 @@
-Feature: adder
-  In order to display the sum of two numbers
+Feature: Add Item
+  In order to add a todo item into todo list
   As anybody
-  I need to provide two numbers
-Scenario: Display the sum of two provided numbers
-  Given I have the number 50 and the number 25
-  When I add the together
-  Then I should get 75
+  I need to provide todo work and priority
+Scenario: add a todo item to todo list
+  Given i am on "/add"
+  When I fill the todowork with "Learn behat"
+  And I press the "submit" button
+  Then page should redirect to "/index"
+
