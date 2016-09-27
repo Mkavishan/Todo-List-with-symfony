@@ -29,7 +29,9 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "phpunit/phpunit":"3.7.*",
-        "behat/mink-goutte-driver": "^1.2"
+        "behat/mink-goutte-driver": "^1.2",
+        "guzzle/guzzle": "3.0.*",
+        "guzzlehttp/guzzle": "6.*"
 
     },
     "require-dev": {

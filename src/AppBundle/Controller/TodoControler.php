@@ -22,28 +22,11 @@ use JMS\SerializerBundle\Serializer\Serializer;
 
 class TodoControler extends Controller
 {
-    public function num(){
-        //echo 'Kavishan';
-        return 20;
-    }
-
     /**
      * @Route("todo/list", name="todo_list")
      * @Method("GET")
      */
     public function listAction(){
-        /*
-        $todos = $this-> getDoctrine()
-            -> getRepository('AppBundle:TodoDatabase')
-            ->findAll();
-
-
-        return $this -> render('todo/index.html.twig', array(
-            'todos' => $todos
-        ));
-        */
-
-        //$database = new TodoDatabase();
         $em = $this->getDoctrine()->getManager();
         $todos = $em->getRepository('AppBundle:TodoDatabase')->findAll();
         $todos = $this->get('serializer')->serialize($todos,'json');
@@ -97,8 +80,6 @@ class TodoControler extends Controller
             );
         return $this-> redirectToRoute('done_works');
 
-
-
     }
 
     /**
@@ -134,12 +115,9 @@ class TodoControler extends Controller
         $database = new TodoDatabase();
         $database -> setTodowork('To Learn PHP');
         $database -> setStatus(1);
-
-
         $em = $this-> getDoctrine()->getManager();
         $em -> persist($database);
         $em -> flush();
-
         return new Response('<html><body>OK</body> </html>');
     }
 
@@ -206,6 +184,5 @@ class TodoControler extends Controller
         return $respose;
 
     }
-
 
 }
