@@ -20,12 +20,7 @@ app.controller('todoController',function ($scope, $http) {
 
                 //$scope.PostDataResponse = "sucsess";
             })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<hr />status: " + status +
-                    "<hr />headers: " + header +
-                    "<hr />config: " + config;
-            });
+
         //$scope.data = '';
         window.location.href = "http://127.0.0.1:8000/todo/index";
 
@@ -57,12 +52,6 @@ app.controller('todoController',function ($scope, $http) {
 
                 //$scope.PostDataResponse = "sucsess";
             })
-            .error(function (data, status, header, config) {
-                $scope.ResponseDetails = "Data: " + data +
-                    "<hr />status: " + status +
-                    "<hr />headers: " + header +
-                    "<hr />config: " + config;
-            });
 
     }
 
