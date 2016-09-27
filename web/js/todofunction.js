@@ -76,6 +76,4 @@ app.controller('todoController',function ($scope, $http) {
         status: "High"
     }];
 
-
-
 })

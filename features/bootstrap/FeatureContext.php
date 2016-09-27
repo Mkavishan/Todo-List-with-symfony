@@ -47,7 +47,7 @@ class FeatureContext  extends MinkContext implements Context, SnippetAcceptingCo
             'POST',
            array($list)
         );
-        $this->newTodo->addAction( $request);
+        $this->newTodo->addAction($request);
     }
 
     /**
@@ -68,6 +68,8 @@ class FeatureContext  extends MinkContext implements Context, SnippetAcceptingCo
      */
     public function thereShouldBeIn($property , $todowork)
     {
+        $request = $this->_client->get("http://127.0.0.1:8000/todo/list");
+        $this->_response = $request;
         $data = json_decode($this->_response->getBody(true));
 
         if (!empty($data)) {
